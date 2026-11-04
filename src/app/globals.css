@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+:root {
+  --bg-from: #f8fafc;
+  --bg-to: #e0f2fe;
+  --accent: #0ea5e9;
+  --accent-dark: #0284c7;
+  --ink: #1e293b;
+  --muted: #64748b;
+}
+
+@theme inline {
+  --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Noto Sans KR",
+    sans-serif;
+
+  --animate-drift: drift var(--dur) ease-in-out var(--delay) infinite alternate;
+  --animate-tag-rise: tag-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @keyframes drift {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(calc(var(--dx) * 0.5), var(--dy));
+    }
+    100% {
+      transform: translate(var(--dx), calc(var(--dy) * -0.4));
+    }
+  }
+
+  @keyframes tag-rise {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(-3px);
+    }
+  }
+}
+
+body {
+  color: var(--ink);
+  background: linear-gradient(160deg, var(--bg-from) 0%, var(--bg-to) 100%)
+    fixed;
+}
